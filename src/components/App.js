@@ -1,9 +1,15 @@
-import '../App.css';
+import {Navbar, Home, PostDetail, CreatePost} from './';
+import {Routes, Route} from 'react-router-dom';
+
 
 function App() {
   return (
-    <div className="App">
-      <h1>Starting React Blog</h1>
+    <div className="container">
+      <Routes>
+        <Route exact path="/" Component={Home} />
+        <Route exact path="/post/:postId" Component={PostDetail} />
+        <Route exact path="/create-post" Component={CreatePost} />
+      </Routes>
     </div>
   );
 }
