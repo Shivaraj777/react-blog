@@ -5,6 +5,7 @@ import {Routes, Route} from 'react-router-dom';
 function App() {
   return (
     <div className="container">
+      <Navbar />
       <Routes>
         <Route exact path="/" Component={Home} />
         <Route exact path="/post/:postId" Component={PostDetail} />
