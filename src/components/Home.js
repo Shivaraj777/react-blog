@@ -18,7 +18,7 @@ function Home() {
       const posts = querySnapshot.docs.map((doc) => {
         let data = doc.data();
         data['id'] = doc.id;
-        console.log(data);
+        // console.log(data);
         return data;
       });
 
@@ -27,6 +27,7 @@ function Home() {
     });
   }
 
+  //use useEffect hook to achieve componentDidUpdate() functionality
   useEffect(() => {
     fetchPostsData();
 
@@ -35,7 +36,7 @@ function Home() {
   return (
     <div className="home">
       {/* Home component Header */}
-      <h1>Tech Blog</h1>
+      <h1>One-Piece Blog</h1>
       <div id="blog-by">Shivaraj</div>
 
       {/* Display the posts on home page */}
