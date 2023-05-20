@@ -1,17 +1,30 @@
+import {db} from '../firebase.js'
+import {addDoc, collection} from 'firebase/firestore';
 import React, {useState} from 'react';
+import { useFormData } from '../hooks.js';
 
 function CreatePost() {
   //create the state for data
-  const [title, setTitle] = useState('');
-  const [subTitle, setSubTitle] = useState('');
-  const [content, setContent] = useState('');
+  const title = useFormData('');
+  const subTitle = useFormData('');
+  const content = useFormData('');
 
   //function to handle form submit
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("title:", title);
-    console.log("subTitle:", subTitle);
-    console.log("content:", content);
+    console.log("title:", title.value);
+    console.log("subTitle:", subTitle.value);
+    console.log("content:", content.value);
+
+    //add the form data to firestore database
+    const newPost = await addDoc(collection(db, 'posts'), {
+      title: title.value,
+      subTitle: subTitle.value,
+      content: content.value,
+      createdAt: new Date()
+    });
+
+    console.log('New post added successfully');
   }
 
   //render the Create Post component
@@ -21,15 +34,15 @@ function CreatePost() {
       <form onSubmit={handleSubmit}>
         <div className="form-field">
           <label>Title</label>
-          <input value={title} onChange={ (e) => {setTitle(e.target.value)} }/>
+          <input {...title} />
         </div>
         <div className="form-field">
           <label>Sub Title</label>
-          <input value={subTitle} onChange={ (e) => {setSubTitle(e.target.value)} } />
+          <input {...subTitle} />
         </div>
         <div className="form-field">
           <label>Content</label>
-          <textarea value={content} onChange={ (e) => {setContent(e.target.value)} } ></textarea>
+          <textarea {...content} ></textarea>
         </div>
         <button className="create-post-btn">Create Post</button>
       </form>
