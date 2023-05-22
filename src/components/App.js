@@ -1,7 +1,5 @@
 import {Navbar, Home, PostDetail, CreatePost} from './';
 import {Routes, Route} from 'react-router-dom';
-import {db} from '../firebase.js';
-
 
 function App() {
   return (

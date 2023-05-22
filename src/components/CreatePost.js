@@ -1,6 +1,6 @@
 import {db} from '../firebase.js'
 import {addDoc, collection} from 'firebase/firestore';
-import React, {useState} from 'react';
+import React from 'react';
 import { useFormData } from '../hooks.js';
 
 function CreatePost() {
@@ -24,7 +24,7 @@ function CreatePost() {
       createdAt: new Date()
     });
 
-    console.log('New post added successfully');
+    console.log('New post added successfully', newPost);
   }
 
   //render the Create Post component

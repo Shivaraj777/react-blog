@@ -14,7 +14,7 @@ function Home() {
     const q = query(collection(db, 'posts'));
 
     //update the posts data in client when firebase data is updated
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+    onSnapshot(q, (querySnapshot) => {
       const posts = querySnapshot.docs.map((doc) => {
         let data = doc.data();
         data['id'] = doc.id;
