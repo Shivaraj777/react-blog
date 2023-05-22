@@ -36,7 +36,7 @@ function Home() {
   return (
     <div className="home">
       {/* Home component Header */}
-      <h1>One-Piece Blog</h1>
+      <h1 style={styles.heading}>One-Piece Blog</h1>
       <div id="blog-by">Shivaraj</div>
 
       {/* Display the posts on home page */}
@@ -50,6 +50,13 @@ function Home() {
       ))}
     </div>
   );
+}
+
+const styles = {
+  heading: {
+    marginTop: 30,
+    fontSize: 40
+  }
 }
   
 export default Home;
