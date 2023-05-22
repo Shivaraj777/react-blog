@@ -2,6 +2,18 @@ import {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {collection, onSnapshot, query} from 'firebase/firestore';
 import {db} from '../firebase';
+import styled from 'styled-components';
+
+//creating a CSS component for styling Blog Heading by susing styled-components
+const BlogHeading = styled.h1`
+  text-align: center;
+  color: #2196f3;
+  margin-bottom: 2px;
+`;
+
+const PostSubTitle = styled.p`
+  font-size: 13px;
+`;
 
 // Home component
 function Home() {
@@ -36,7 +48,7 @@ function Home() {
   return (
     <div className="home">
       {/* Home component Header */}
-      <h1 style={styles.heading}>One-Piece Blog</h1>
+      <BlogHeading>One-Piece Blog</BlogHeading>
       <div id="blog-by">Shivaraj</div>
 
       {/* Display the posts on home page */}
@@ -45,7 +57,7 @@ function Home() {
           <Link to={`/post/${post.id}`}>
             <h3>{post.title}</h3>
           </Link>
-          <p>{post.subTitle}</p>
+          <PostSubTitle>{post.subTitle}</PostSubTitle>
         </div>
       ))}
     </div>
