@@ -44,9 +44,9 @@ body {
   font-style: italic;
   margin-bottom: 20px;
 }
-.post-detail h1 {
+/* .post-detail h1 {
   text-align: center;
-}
+} */
 #nav {
   list-style-type: none;
   padding: 0;

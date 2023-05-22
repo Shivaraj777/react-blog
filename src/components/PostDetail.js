@@ -1,7 +1,8 @@
-import {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {db} from '../firebase.js';
 import {doc, getDoc} from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
+import Radium from 'radium';
 
 //Post Deatil component
 function PostDetail() {
@@ -21,10 +22,31 @@ function PostDetail() {
 
   return (
     <div className="post-detail">
-      <h1>{post.title}</h1>
-      <p>{post.content}</p>
+      <h1 style={styles.heading}>{post.title}</h1>
+      <p style={styles.postDetail}>{post.content}</p>
     </div>
   );
 }
 
-export default PostDetail;
+//applying styles using radium library
+const styles = {
+  heading: {
+    textAlign: 'center',
+
+    ':hover': {
+      color: 'red'
+    }
+  },
+  postDetail: {
+    border: '1px solid #e1e1e1',
+    padding: 5,
+    paddingTop: 10,
+
+    '@media(max-width: 720px)': {
+      color: 'pink'
+    }
+  }
+};
+
+//Radium is a higher order component which takes a Component as input
+export default Radium(PostDetail);

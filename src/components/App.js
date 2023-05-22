@@ -1,9 +1,11 @@
 import {Navbar, Home, PostDetail, CreatePost} from './';
 import {Routes, Route} from 'react-router-dom';
+import {StyleRoot} from 'radium';
 
 function App() {
   return (
-    <div className="container">
+    <StyleRoot>
+      <div className="container">
       <Navbar />
       <Routes>
         <Route exact path="/" Component={Home} />
@@ -11,6 +13,7 @@ function App() {
         <Route exact path="/create-post" Component={CreatePost} />
       </Routes>
     </div>
+    </StyleRoot>
   );
 }
 
