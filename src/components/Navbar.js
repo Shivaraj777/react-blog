@@ -1,14 +1,25 @@
 import {Link} from 'react-router-dom';
+import styled from 'styled-components';
+
+//styling a component used from third party library
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #9e9e9e;
+
+  a:hover {
+    text-decoration: underline;
+  }
+`;
 
 function Navbar() {
     return (
       <div className="">
         <ul id="nav">
           <li>
-            <Link to="/">Home</Link>
+            <StyledLink to="/">Home</StyledLink>
           </li>
           <li>
-            <Link to="/create-post">Create Post</Link>
+            <StyledLink to="/create-post">Create Post</StyledLink>
           </li>
         </ul>
       </div>
