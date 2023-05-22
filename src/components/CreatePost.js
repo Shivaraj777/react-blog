@@ -2,7 +2,24 @@ import {db} from '../firebase.js'
 import {addDoc, collection} from 'firebase/firestore';
 import React from 'react';
 import { useFormData } from '../hooks.js';
-import classes from '../button.module.css';
+// import classes from '../button.module.css';
+import styled, {css} from 'styled-components';
+
+//Adding styles dynamically by using styled components
+const StyledButton = styled.button`
+  height: 33px;
+  background: ${(props) => (props.primary ? '#4caf50' : 'blue')};
+  border: 0;
+  color: #fff;
+  padding: 8px;
+  font-size: 15px;
+  border-radius: 3px;
+  cursor: pointer;
+  //to add multiple styles dynamically at run-time we use css property from styled-compoents
+  ${(props) => props.primary && css`
+    border: 1px solid ${props.bgColor};
+  `}
+`;
 
 function CreatePost() {
   //create the state for data
@@ -45,7 +62,8 @@ function CreatePost() {
           <label>Content</label>
           <textarea {...content} ></textarea>
         </div>
-        <button className={classes.createPostBtn}>Create Post</button>
+        {/* <button className={classes.createPostBtn}>Create Post</button> */}
+        <StyledButton primary bgColor='red'>Create Post</StyledButton>
       </form>
     </div>
   );
